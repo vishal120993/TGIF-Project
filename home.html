@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!---------------------------------Linked CSS and Scripts--------------------------------------------------->
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <div class="container">
+
+        <!---------------------------------Header text and styling------------------------------------------>
+        <div class="row">
+            <div class="col-sm-2">
+                <img src="TGIF.jpg" class="rounded-circle img-fluid " alt="TGIF">
+            </div>
+            <div>
+                <h1 class="display-1 font-italic font-weight-bold text-info">tgif</h1>
+            </div>
+            <div class="col-sm-8 navbar justify-content-end">
+                <img src="mail.jpg" class="rounded-circle img-fluid col-sm-2 " alt="mail">
+                <a href="mailto:info@tgif.net">
+                    <h2  class="text-info">info@tgif.net</h2>
+                </a>
+            </div>
+        </div>
+        
+        <!----------------------------Navigation Bar text and styling---------------------------------------->
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-light bg-dark dropdown-item active" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="senate_data.html">Congress 113</a>
+                </li>
+                <!--  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="">
+                        Congress 113
+                    </a>
+                  <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#"></a>
+                        <a class="dropdown-item" href="#"></a>
+                    </div>-->
+                </li>
+            </ul>
+        </nav> <br><br>
+        
+        <!-----------------------Sub heading and paragraph text and logo styling---------------------------->
+        <h1>About Us</h1>
+        <div class="row">
+            <div class="col-sm-8" id="accordion">
+
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link text-info" data-toggle="collapse" href="#collapseOne">
+                            Senators
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                        <div class="card-body">
+                            <p> Openness, accountability, and honesty define government transparency. In a free society,
+                                transparency is government’s obligation to share information with citizens. It is at the
+                                heart of
+                                how
+                                citizens hold their public officials accountable. Here at TGIF we believe that
+                                government should be
+                                transparent.</p>
+                            <p> Governments exist to serve the people. Information on how officials conduct the public
+                                business and
+                                spend
+                                taxpayer money must be readily available and easily understood. This transparency allows
+                                good and
+                                just
+                                governance. Transparency promotes accountability and provides information for citizens
+                                about what
+                                their
+                                Government is doing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <a class="collapsed card-link text-info" data-toggle="collapse" href="#collapseTwo">
+                            House Of Representatives
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            <p> We also believe that government should be participatory. Public engagement enhances the
+                                Government’s
+                                effectiveness and improves the quality of its decisions. Knowledge is widely dispersed
+                                in society,
+                                and
+                                public officials benefit from having access to that dispersed knowledge. We invite you
+                                to use our
+                                site
+                                to
+                                become actively engaged in American government.</p>
+                            <p>TGIF works to disclose information in forms that the public can readily find and use. We
+                                solicit
+                                public
+                                feedback to identify information of greatest use to the public.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!--Just More info text styling-->
+            <!--   <div class="col-sm-8">
+               <p> Openness, accountability, and honesty define government transparency. In a free society,
+                    transparency is government’s obligation to share information with citizens. It is at the heart of
+                    how
+                    citizens hold their public officials accountable. Here at TGIF we believe that government should be
+                    transparent.</p>
+                <p> Governments exist to serve the people. Information on how officials conduct the public business and
+                    spend
+                    taxpayer money must be readily available and easily understood. This transparency allows good and
+                    just
+                    governance. Transparency promotes accountability and provides information for citizens about what
+                    their
+                    Government is doing.</p>
+                
+
+                    <button data-toggle="collapse" data-target="#demo">Read More</button>
+
+                    <div id="demo" class="collapse">
+                       <p> We also believe that government should be participatory. Public engagement enhances the Government’s
+                    effectiveness and improves the quality of its decisions. Knowledge is widely dispersed in society,
+                    and
+                    public officials benefit from having access to that dispersed knowledge. We invite you to use our
+                    site
+                    to
+                    become actively engaged in American government.</p>
+                <p>TGIF works to disclose information in forms that the public can readily find and use. We solicit
+                    public
+                    feedback to identify information of greatest use to the public.</p>
+                    </div> -->
+
+            <div class="col-sm-4 navbar justify-content-center"> <img src="both.jpg" class="rounded-circle img-fluid "
+                    alt="TGIF"></div>
+        </div> <br>
+        
+        <!----------------------------------Footer text and styling------------------------------------------>
+        <div class="footer bottom navbar navbar-expand-md bg-dark text-light justify-content-center">&copy; 2016
+            TGIF | All Rights Reserved</div>
+    </div>
+</body>
+
+</html>

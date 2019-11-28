@@ -1,0 +1,14 @@
+/* styled rows of table */
+td {
+    text-align: center;
+}
+
+/* styled rows (Names) of table */
+td.name-cell {
+    text-align: left;
+}
+
+/* styled rows (headers) of table */
+th.header {
+    text-align: center;
+}
