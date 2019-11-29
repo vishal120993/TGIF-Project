@@ -57,13 +57,6 @@ function getTable() {
 
     let averagePercentageOfIndependents = votesWithIndependentsParty / statistics.numberOfIndependents;
 
-
-    //console.log(averagePercentageOfDemocrats)
-    //console.log("No. of D members are " + statistics.numberOfDemocrats);
-    //console.log("No. of R members are " + statistics.numberOfRepublicans);
-    //console.log("No. of I members are " + statistics.numberOfIndependents);
-    //console.log(statistics.numberOfDemocrats.length + statistics.numberOfRepublicans.length + statistics.numberOfIndependents.length);
-
     // Total number of members in all party (450)
     let total = statistics.numberOfDemocrats + statistics.numberOfRepublicans + statistics.numberOfIndependents;
     
@@ -98,9 +91,65 @@ function getTable() {
     housestatistics += "<td>" + averagePercentageOfMembersVoted.toFixed(2) + " %" + "</td>";
     housestatistics += "</tr>";
     housestatistics += "</table>";
-    document.getElementById("table-d").innerHTML = housestatistics;
+    document.getElementById("table-data").innerHTML = housestatistics;
 }
 
 getTable();
+
+// function to calculate the table data like Names, missed votes, and %missed votes
+function calculateEngaged(members) {
+    let tenPercentOfTheLength = members.length * 0.1;  // creating 10% of members length
+    let tenPercentArray = [];          // Creating an empty array 
+    // For loop for getting through all the table data 
+    for (i = 0; i < members.length; i++) {
+        if (i < tenPercentOfTheLength) {
+            tenPercentArray.push(members[i]); // adding elements to the array if its less than 10% of members length
+        } else if (members[i].missed_votes === members[i - 1].missed_votes) {
+            tenPercentArray.push(members[i]); // adding elements to the array if members with missed votes is same as previous member
+        } else {
+            break; // if the elements are not less than 10% of members length, break the loop  (eg. break after 94 if total elements are 105) 
+        }
+    }
+    return tenPercentArray;
+
+}
+
+// function to create the ten percent senate attendance table
+function createTenPercentTable(members, tableId) {
+
+    let senateEngagedStatistics = "";
+    senateEngagedStatistics = "<table>";
+    // Table headers
+    senateEngagedStatistics += "<tr>";
+    senateEngagedStatistics += "<th>" + "Name" + "</th>";
+    senateEngagedStatistics += "<th>" + "No. of Missed Votes" + "</th>";
+    senateEngagedStatistics += "<th>" + "Percentage Of Missed Votes" + "</th>";
+    senateEngagedStatistics += "</tr>";
+
+    for (i = 0; i < members.length; i++) {
+        if (members[i].middle_name === null) {
+            members[i].full_name = members[i].first_name + " " + members[i].last_name
+        } else {
+            members[i].full_name = members[i].first_name + " " + members[i].middle_name + " " + data.results[0].members[i].last_name
+        }
+
+        senateEngagedStatistics += "<tr>";
+        senateEngagedStatistics += `<td class='name-cell'><a href='${members[i].url}'> ${members[i].full_name}</a> </td>`
+        senateEngagedStatistics += "<td>" + members[i].missed_votes + "</td>";
+        senateEngagedStatistics += "<td>" + members[i].missed_votes_pct + " %" + "</td>";
+        senateEngagedStatistics += "</tr>";
+    }
+    senateEngagedStatistics += "</table>";
+    document.getElementById(tableId).innerHTML = senateEngagedStatistics;
+}
+
+//Create ascending and descending order of missed  votes
+const sortedLeastEngaged = [...data.results[0].members.sort((a, b) => Number(b.missed_votes) - Number(a.missed_votes))];
+const sortedMostEngaged = [...data.results[0].members.sort((a, b) => Number(a.missed_votes) - Number(b.missed_votes))];
+
+// Call both the functions
+
+createTenPercentTable(calculateEngaged(sortedLeastEngaged), "table-least-engaged");
+createTenPercentTable(calculateEngaged(sortedMostEngaged), "table-most-engaged");
 
 

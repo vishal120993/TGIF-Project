@@ -4,6 +4,7 @@ let statistics = {
     "numberOfRepublicans": 0,
     "numberOfIndependents": 0,
 }
+
 // Main function for creating table dynamically
 
 function getTable() {
@@ -97,24 +98,25 @@ function getTable() {
 
 getTable();
 
-
+// function to calculate the table data like Names, missed votes, and %missed votes
 function calculateEngaged(members) {
-    let tenPercentOfTheLength = members.length * 0.1;
-    let tenPercentArray = [];
-    // For loop for looping through all the data 
+    let tenPercentOfTheLength = members.length * 0.1;  // creating 10% of members length
+    let tenPercentArray = [];          // Creating an empty array 
+    // For loop for getting through all the table data 
     for (i = 0; i < members.length; i++) {
         if (i < tenPercentOfTheLength) {
-            tenPercentArray.push(members[i]);
+            tenPercentArray.push(members[i]); // adding elements to the array if its less than 10% of members length
         } else if (members[i].missed_votes === members[i - 1].missed_votes) {
-            tenPercentArray.push(members[i]);
+            tenPercentArray.push(members[i]); // adding elements to the array if members with missed votes is same as previous member
         } else {
-            break;
+            break; // if the elements are not less than 10% of members length, break the loop  (eg. break after 94 if total elements are 105) 
         }
     }
     return tenPercentArray;
 
 }
 
+// function to create the ten percent senate attendance table
 function createTenPercentTable(members, tableId) {
 
     let senateEngagedStatistics = "";
@@ -143,12 +145,14 @@ function createTenPercentTable(members, tableId) {
     document.getElementById(tableId).innerHTML = senateEngagedStatistics;
 }
 
+//Create ascending and descending order of missed  votes
 const sortedLeastEngaged = [...data.results[0].members.sort((a, b) => Number(b.missed_votes) - Number(a.missed_votes))];
 const sortedMostEngaged = [...data.results[0].members.sort((a, b) => Number(a.missed_votes) - Number(b.missed_votes))];
 
-createTenPercentTable(calculateEngaged(sortedMostEngaged), "table-most-engaged");
-createTenPercentTable(calculateEngaged(sortedLeastEngaged), "table-least-engaged");
+// Call both the functions
 
+createTenPercentTable(calculateEngaged(sortedLeastEngaged), "table-least-engaged");
+createTenPercentTable(calculateEngaged(sortedMostEngaged), "table-most-engaged");
 
 
 

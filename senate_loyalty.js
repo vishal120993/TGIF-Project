@@ -56,15 +56,7 @@ function getTable() {
     let averagePercentageOfRepublicans = votesWithRepublicansParty / statistics.numberOfRepublicans;
 
     let averagePercentageOfIndependents = votesWithIndependentsParty / statistics.numberOfIndependents;
-
-
-    //console.log(averagePercentageOfDemocrats)
-    //console.log("No. of D members are " + statistics.numberOfDemocrats.length);
-    //console.log("No. of R members are " + statistics.numberOfRepublicans.length);
-    //console.log("No. of I members are " + statistics.numberOfIndependents.length);
-    //console.log(statistics.numberOfDemocrats.length + statistics.numberOfRepublicans.length + statistics.numberOfIndependents.length);
-
-        
+      
     // Total number of members in all party (105)
     let total = statistics.numberOfDemocrats + statistics.numberOfRepublicans + statistics.numberOfIndependents;
     
@@ -102,50 +94,61 @@ function getTable() {
     senatestatistics += "</table>";
     document.getElementById("table-d").innerHTML = senatestatistics;
 }
-
-
-
 getTable();
 
-
-/*
-{
-    let senatestatistics = "";
-    senatestatistics = "<table>";
-    // Table headers
-    senatestatistics += "<tr>";
-    senatestatistics += "<th>" + "Party" + "</th>";
-    senatestatistics += "<th>" + "No. of Reps" + "</th>";
-    senatestatistics += "<th>" + "Percentage Of Votes With Party" + "</th>";
-    senatestatistics += "</tr>";
-    for (i = 0; i < data.results[0].members.length; i++) {
-        senatestatistics += "<tr>";
-        senatestatistics += "<td>" + "Democrats" + "</td>";
-        senatestatistics += "<td>" + statistics.numberOfDemocrats.length + "</td>";
-        senatestatistics += "<td>" + i * 1000 + "</td>";
-        senatestatistics += "</tr>";
-
-        senatestatistics += "<tr>";
-        senatestatistics += "<td>" + "Republicans" + "</td>";
-        senatestatistics += "<td>" + statistics.numberOfRepublicans.length + "</td>";
-        senatestatistics += "<td>" + i * 1000 + "</td>";
-        senatestatistics += "</tr>";
-
-        senatestatistics += "<tr>";
-        senatestatistics += "<td>" + "Independents" + "</td>";
-        senatestatistics += "<td>" + statistics.numberOfIndependents.length + "</td>";
-        senatestatistics += "<td>" + i * 1000 + "</td>";
-        senatestatistics += "</tr>";
-
-        senatestatistics += "<tr>";
-        senatestatistics += "<td>" + "Total" + "</td>";
-        senatestatistics += "<td>" + statistics.numberOfDemocrats.length + statistics.numberOfRepublicans.length + statistics.numberOfIndependents.length + "</td>";
-        senatestatistics += "<td>" + i * 1000 + "</td>";
-        senatestatistics += "</tr>";
+// function to calculate the table data like Names, missed votes, and %missed votes
+function calculateLoyal(members) {
+    let tenPercentOfTheLength = members.length * 0.1;  // creating 10% of members length
+    let tenPercentArray = [];          // Creating an empty array 
+    // For loop for getting through all the table data 
+    for (i = 0; i < members.length; i++) {
+        if (i < tenPercentOfTheLength) {
+            tenPercentArray.push(members[i]); // adding elements to the array if its less than 10% of members length
+        } else if (members[i].votes_with_party_pct === members[i - 1].votes_with_party_pct) {
+            tenPercentArray.push(members[i]); // adding elements to the array if members with percentage votes with party is same as previous member
+        } else {
+            break; // if the elements are not less than 10% of members length, break the loop  (eg. break after 439 if total elements are 450) 
+        }
     }
-    senatestatistics += "</table>";
-    document.getElementById("table-d").innerHTML = senatestatistics;
+    return tenPercentArray;
+
 }
 
+// function to create the ten percent senate attendance table (least loyal)
+function createTenPercentTable(members, tableId) {
+    
+    let senateEngagedStatistics = "";
+    senateEngagedStatistics = "<table>";
+    // Table headers
+    senateEngagedStatistics += "<tr>";
+    senateEngagedStatistics += "<th>" + "Name" + "</th>";
+    senateEngagedStatistics += "<th>" + "No. of Party Votes" + "</th>";
+    senateEngagedStatistics += "<th>" + "Percentage Of Party Votes" + "</th>";
+    senateEngagedStatistics += "</tr>";
 
-*/
+    for (i = 0; i < members.length; i++) {
+        if (members[i].middle_name === null) {
+            members[i].full_name = members[i].first_name + " " + members[i].last_name
+        } else {
+            members[i].full_name = members[i].first_name + " " + members[i].middle_name + " " + data.results[0].members[i].last_name
+        }
+        
+        
+        senateEngagedStatistics += "<tr>";
+        senateEngagedStatistics += `<td class='name-cell'><a href='${members[i].url}'> ${members[i].full_name}</a> </td>`
+        senateEngagedStatistics += "<td>" + members[i].total_votes + "</td>";
+        senateEngagedStatistics += "<td>" + members[i].votes_with_party_pct +" %" + "</td>";
+        senateEngagedStatistics += "</tr>";
+    }
+    senateEngagedStatistics += "</table>";
+    document.getElementById(tableId).innerHTML = senateEngagedStatistics;
+}
+
+//Create ascending and descending order of percentage of votes party
+const sortedLeastLoyal = [...data.results[0].members.sort((a, b) => Number(a.votes_with_party_pct) - Number(b.votes_with_party_pct))];  //ascending 
+const sortedMostLoyal = [...data.results[0].members.sort((a, b) => Number(b.votes_with_party_pct) - Number(a.votes_with_party_pct))];   //descending
+
+// Call both the functions
+
+createTenPercentTable(calculateLoyal(sortedLeastLoyal), "table-least-loyal");
+createTenPercentTable(calculateLoyal(sortedMostLoyal), "table-most-loyal");

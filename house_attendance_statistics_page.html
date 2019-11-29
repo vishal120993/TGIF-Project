@@ -46,7 +46,7 @@
                     <a class="nav-link text-light" href="home.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="home.html">Congress 113</a>
+                    <a class="nav-link text-light" href="senate_data.html">Congress 113</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle bg-dark text-light" href="#" id="navbardrop"
@@ -54,12 +54,12 @@
                         Attendance
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="house_data.html">House</a>
-                        <a class="dropdown-item" href="#">Senate</a>
+                        <a class="dropdown-item disabled" href="#">House</a>
+                        <a class="dropdown-item" href="senate_attendance_statistics_page.html">Senate</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="home.html">Party Loyalty</a>
+                    <a class="nav-link text-light" href="senate_party_loyalty_statistics_page.html">Party Loyalty</a>
                 </li>
             </ul>
         </nav> <br><br>
@@ -84,131 +84,28 @@
             </div>
 
             <div class="col-sm-6">
-                <table id="table-d" class="table-sm table-borderless table-light table-striped navbar justify-content-end ">
-                   <!-- <tr>
-                        <th>Party</th>
-                        <th>Number of Reps</th>
-                        <th>Percentage Voted with Party</th>
-                    </tr>
-
-
-                    <tr>
-                        <td>Republican</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                    <tr>
-                        <td>Democrat</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                    <tr>
-                        <td>Independent</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                    <tr>
-                        <td>Total</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>-->
-                </table>
+                <table id="table-data" class="table-sm table-borderless table-light table-striped navbar justify-content-end "></table>
                 <br>
             </div>
         </div>
         <hr>
-<!--
+
         <div class="row">
             <h3 class="col-sm-6 text-info">Least Engaged (Bottom 10% Attendance)</h3>
             <h3 class="col-sm-6 text-info">Most Engaged (Top 10% Attendance)</h3>
         </div><br>
-    -->
+  
         <div class="row">
-                &nbsp;&nbsp;&nbsp;<table class ="table-sm table-borderless table-light table-striped col-sm-5">
-             <!--   <tr>
-                    <th>Name</th>
-                    <th>Number of Missed Votes</th>
-                    <th>% Missed</th>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>-->
-            </table>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <table id="table-least-engaged" class ="table-sm  table-light table-striped navbar justify-content-end col-sm-6"> </table>  
 
-            <table class="table-sm table-light table-striped col-sm-6 ">
-                   
-                     <!--   <tr>
-                            <th>Name</th>
-                            <th>Number of Missed Votes</th>
-                            <th>% Missed</th>
-                        </tr>
-                    
-                        <tr>
-                            <td>--</td>
-                            <td>--</td>
-                            <td>--</td>
-                        </tr>
-                        <tr>
-                            <td>--</td>
-                            <td>--</td>
-                            <td>--</td>
-                        </tr>
-                        <tr>
-                            <td>--</td>
-                            <td>--</td>
-                            <td>--</td>
-                        </tr>
-                        <tr>
-                            <td>--</td>
-                            <td>--</td>
-                            <td>--</td>
-                        </tr>
-                        <tr>
-                            <td>--</td>
-                            <td>--</td>
-                            <td>--</td>
-                        </tr>
-                        <tr>
-                            <td>--</td>
-                            <td>--</td>
-                            <td>--</td>
-                        </tr> -->
-                       
-                </table>
+            <table id="table-most-engaged" class="table-sm table-light table-striped navbar justify-content-end col-sm-6 "> </table>
         </div><br>
 
         <!----------------------------------Footer text and styling------------------------------------------>
-      <!--  <div class="footer bottom navbar navbar-expand-md bg-dark text-light justify-content-center">&copy; 2016
+       <div class="footer bottom navbar navbar-expand-md bg-dark text-light justify-content-center">&copy; 2016
             TGIF | All Rights Reserved
         </div>
-    </div> -->
+    </div> 
     <script src="pro_congress_113_house.js"></script>
     <script src="house_statistics.js"></script>
 </body>
