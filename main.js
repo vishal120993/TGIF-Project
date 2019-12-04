@@ -7,6 +7,7 @@ let membersState  = document.getElementById("stateFilter");
 
 // Functions
 
+// function to create table
 function createTable(members,tableId) {
     let tablecontents = "";
  
@@ -44,6 +45,7 @@ function createTable(members,tableId) {
       
 }
 
+// function to filter out members on the basis of party and state
 function filterMembers (members) {
     let array  = [];
      //console.log(democratParty);
@@ -62,6 +64,7 @@ function filterMembers (members) {
    return array;
   }
 
+// function to create the state options and sorting in ascending order
 function showState (members) {
     let arrayOfState = [];
     
@@ -80,7 +83,8 @@ function showState (members) {
         membersState.appendChild(option)
     }
 }
-showState(members)
+showState(members);
+
 
 // Calling the table
 
@@ -98,7 +102,7 @@ independentParty.addEventListener("click",  function () {
  
 membersState.addEventListener("change", function () {
     createTable(filterMembers(members), "table-data");
-})
+});
 
 
 
