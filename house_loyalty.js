@@ -69,26 +69,26 @@ function getTable() {
 
     housestatistics += "<tr>";
     housestatistics += "<td class = 'party'>" + "Democrats" + "</td>";
-    housestatistics += "<td class = 'center'>" + statistics.numberOfDemocrats + "</td>";
-    housestatistics += "<td class = 'center'>" + averagePercentageOfDemocrats.toFixed(2) + " %" + "</td>";
+    housestatistics += "<td>" + statistics.numberOfDemocrats + "</td>";
+    housestatistics += "<td>" + averagePercentageOfDemocrats.toFixed(2) + " %" + "</td>";
     housestatistics += "</tr>";
 
     housestatistics += "<tr>";
     housestatistics += "<td class = 'party'>" + "Republicans" + "</td>";
-    housestatistics += "<td class = 'center'>" + statistics.numberOfRepublicans + "</td>";
-    housestatistics += "<td class = 'center'>" + averagePercentageOfRepublicans.toFixed(2) + " %" + "</td>";
+    housestatistics += "<td>" + statistics.numberOfRepublicans + "</td>";
+    housestatistics += "<td>" + averagePercentageOfRepublicans.toFixed(2) + " %" + "</td>";
     housestatistics += "</tr>";
 
     housestatistics += "<tr>";
     housestatistics += "<td class = 'party'>" + "Independents" + "</td>";
-    housestatistics += "<td class = 'center'>" + statistics.numberOfIndependents+ "</td>";
-    housestatistics += "<td class = 'center'>" + /*averagePercentageOfIndependents.toFixed(2)*/ 0 + " %" + "</td>";
+    housestatistics += "<td>" + statistics.numberOfIndependents+ "</td>";
+    housestatistics += "<td>" + /*averagePercentageOfIndependents.toFixed(2)*/ 0 + " %" + "</td>";
     housestatistics += "</tr>";
 
     housestatistics += "<tr>";
     housestatistics += "<td class = 'party'>" + "Total" + "</td>";
-    housestatistics += "<td class = 'center'>" + total + "</td>";
-    housestatistics += "<td class = 'center'>" + averagePercentageOfMembersVoted.toFixed(2) + " %" + "</td>";
+    housestatistics += "<td>" + total + "</td>";
+    housestatistics += "<td>" + averagePercentageOfMembersVoted.toFixed(2) + " %" + "</td>";
     housestatistics += "</tr>";
     housestatistics += "</table>";
     document.getElementById("table-data").innerHTML = housestatistics;
@@ -122,8 +122,8 @@ function createTenPercentTable(members, tableId) {
     // Table headers
     senateEngagedStatistics += "<tr>";
     senateEngagedStatistics += "<th>" + "Name" + "</th>";
-    senateEngagedStatistics += "<th>" + "No. of Party Votes" + "</th>";
-    senateEngagedStatistics += "<th>" + "Percentage Of Party Votes" + "</th>";
+    senateEngagedStatistics += "<th>" + "Party Votes" + "</th>";
+    senateEngagedStatistics += "<th>" + "Percentage Party Votes" + "</th>";
     senateEngagedStatistics += "</tr>";
 
     for (i = 0; i < members.length; i++) {

@@ -122,8 +122,8 @@ function createTenPercentTable(members, tableId) {
     // Table headers
     senateEngagedStatistics += "<tr>";
     senateEngagedStatistics += "<th>" + "Name" + "</th>";
-    senateEngagedStatistics += "<th>" + "No. of Party Votes" + "</th>";
-    senateEngagedStatistics += "<th>" + "Percentage Of Party Votes" + "</th>";
+    senateEngagedStatistics += "<th>" + "Party Votes" + "</th>";
+    senateEngagedStatistics += "<th>" + "Percentage Party Votes" + "</th>";
     senateEngagedStatistics += "</tr>";
 
     for (i = 0; i < members.length; i++) {

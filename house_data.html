@@ -94,34 +94,29 @@
             <div class="col-sm-8">
                 Filter by Party:
                 <!-- Default inline 1-->
-                <div class="custom-control custom-checkbox custom-control-inline ">
-                    <input type="checkbox" class="custom-control-input" id="defaultInline1">
+                <div class="custom-control custom-checkbox custom-control-inline" >
+                    <input type="checkbox" class="custom-control-input" id="defaultInline1" checked>
                     <label class="custom-control-label" for="defaultInline1">Republican</label>
                 </div>
 
                 <!-- Default inline 2-->
-                <div class="custom-control custom-checkbox custom-control-inline ">
-                    <input type="checkbox" class="custom-control-input" id="defaultInline2">
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="defaultInline2" checked>
                     <label class="custom-control-label" for="defaultInline2">Democrat</label>
                 </div>
 
                 <!-- Default inline 3-->
                 <div class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="defaultInline3">
+                    <input type="checkbox" class="custom-control-input" id="defaultInline3" checked>
                     <label class="custom-control-label" for="defaultInline3">Independent</label>
                 </div>
             </div>
 
             <div class=" dropdown col-sm-4 navbar justify-content-end">
                 Filter by State:
-                <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                    All
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                </div>
+                <select name="stateFilter" id="stateFilter">
+                        <option value="all">All</option>
+                    </select>
 
             </div>
 

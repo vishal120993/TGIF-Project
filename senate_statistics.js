@@ -124,15 +124,15 @@ function createTenPercentTable(members, tableId) {
     // Table headers
     senateEngagedStatistics += "<tr>";
     senateEngagedStatistics += "<th>" + "Name" + "</th>";
-    senateEngagedStatistics += "<th>" + "No. of Missed Votes" + "</th>";
-    senateEngagedStatistics += "<th>" + "Percentage Of Missed Votes" + "</th>";
+    senateEngagedStatistics += "<th>" + "Missed Votes" + "</th>";
+    senateEngagedStatistics += "<th>" + "Percentage Missed Votes" + "</th>";
     senateEngagedStatistics += "</tr>";
 
     for (i = 0; i < members.length; i++) {
         if (members[i].middle_name === null) {
             members[i].full_name = members[i].first_name + " " + members[i].last_name
         } else {
-            members[i].full_name = members[i].first_name + " " + members[i].middle_name + " " + data.results[0].members[i].last_name
+            members[i].full_name = members[i].first_name + " " + members[i].middle_name + " " + members[i].last_name
         }
 
         senateEngagedStatistics += "<tr>";

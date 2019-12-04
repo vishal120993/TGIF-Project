@@ -6,10 +6,9 @@
     <title></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style_sprint2.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
@@ -68,7 +67,7 @@
 
         <!--------------------Sub heading and paragraph text and senate logo styling------------------------>
         <div class="row">
-            <h1 class="col-sm-6 text-info">Party Loyalty</h1>
+            <h2 class="col-sm-6 text-info">Party Loyalty</h2>
             <h2 class="col-sm-6 navbar justify-content-end text-info">House at a glance</h2>
         </div>
         <div class="row">
@@ -81,30 +80,32 @@
 
             <div class="col-sm-6">
                 <table id="table-data"
-                    class="table-sm table-borderless table-light table-striped navbar justify-content-end "></table>
+                    class="table-sm table-borderless table-light table-striped table-hover navbar justify-content-end "></table>
                 <br>
             </div>
         </div>
         <hr>
 
         <div class="row">
-            <h3 class="col-sm-6 text-info">Least Loyal (Bottom 10% Attendance)</h3>
-            <h3 class="col-sm-6 text-info">Most Loyal (Top 10% Attendance)</h3>
+            <h3 class="col-sm-6 text-info navbar justify-content-center ">Least Loyal (Bottom 10% Attendance)</h3>
+            <h3 class="col-sm-6 text-info navbar justify-content-center ">Most Loyal (Top 10% Attendance)</h3>
         </div><br>
 
         <div class="row">
-            <table id="table-least-loyal" class="table-sm table-light table-striped navbar justify-content-end col-sm-6"></table>
-            <table id="table-most-loyal" class="table-sm table-light table-striped navbar justify-content-end col-sm-6 "></table>
+            <table id="table-least-loyal"
+                class="table-sm table-light table-striped table-hover navbar justify-content-center  col-sm-6"></table>
+            <table id="table-most-loyal"
+                class="table-sm table-light table-striped table-hover navbar justify-content-center  col-sm-6 "></table>
         </div><br>
 
         <!----------------------------------Footer text and styling------------------------------------------>
-       
+
         <div class="footer bottom navbar navbar-expand-md bg-dark text-light justify-content-center">&copy; 2016
             TGIF | All Rights Reserved
         </div>
     </div>
-        <script src="pro_congress_113_house.js"></script>
-        <script src="house_loyalty.js"></script>
+    <script src="pro_congress_113_house.js"></script>
+    <script src="house_loyalty.js"></script>
 </body>
 
 </html>

@@ -12,3 +12,8 @@ td.name-cell {
 th.header {
     text-align: center;
 }
+
+
+td.party {
+    text-align: left;
+}
