@@ -22,7 +22,7 @@
 
 <body>
     <div class="container">
-        
+
         <!---------------------------------Header text and styling------------------------------------------>
         <div class="row">
             <div class="col-sm-2">
@@ -90,11 +90,16 @@
         </div> <br>
 
         <!---------------------------------Check box and drop down filters---------------------------------->
+
         <div class="row">
-            <div class="col-sm-8">
+
+            <div class="col-sm-2 navbar">
+                <input type="text" id="searchBar" placeholder="Search for Names...">
+            </div>
+            <div class="col-sm-6 navbar justify-content-center">
                 Filter by Party:
                 <!-- Default inline 1-->
-                <div id="Republican" class="custom-control custom-checkbox custom-control-inline " >
+                <div id="Republican" class="custom-control custom-checkbox custom-control-inline ">
                     <input type="checkbox" class="custom-control-input" id="defaultInline1" checked>
                     <label class="custom-control-label" for="defaultInline1">Republican</label>
                 </div>
@@ -107,12 +112,19 @@
 
                 <!-- Default inline 3-->
                 <div id="Independent" class="custom-control custom-checkbox custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="defaultInline3"checked>
+                    <input type="checkbox" class="custom-control-input" id="defaultInline3" checked>
                     <label class="custom-control-label" for="defaultInline3">Independent</label>
                 </div>
             </div>
 
-            <div class=" dropdown col-sm-4  navbar justify-content-end">
+            <div class="col-sm-2 navbar justify-content-end">
+                Seniority Year:
+                <select name="seniority filter" id="seniorityFilter">
+                    <option value="all">All</option>
+                </select>
+            </div>
+
+            <div class=" dropdown col-sm-2  navbar justify-content-end">
                 Filter by State:
                 <select name="stateFilter" id="stateFilter">
                     <option value="all">All</option>
