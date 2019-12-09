@@ -55,6 +55,26 @@
                         <a class="dropdown-item disabled" href="#">Senate</a>
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle bg-dark text-light" href="#" id="navbardrop"
+                            data-toggle="dropdown">
+                            Attendance
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="house_attendance_statistics_page.html">House</a>
+                            <a class="dropdown-item" href="senate_attendance_statistics_page.html">Senate</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle bg-dark text-light" href="#" id="navbardrop"
+                            data-toggle="dropdown">
+                            Party Loyalty
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="house_party_loyalty_statistics_page.html">House</a>
+                            <a class="dropdown-item" href="senate_party_loyalty_statistics_page.html">Senate</a>
+                        </div>
+                    </li>
             </ul>
         </nav> <br><br>
 
@@ -93,10 +113,8 @@
 
         <div class="row">
 
-            <div class="col-sm-2 navbar">
-                <input type="text" id="searchBar" placeholder="Search for Names...">
-            </div>
-            <div class="col-sm-6 navbar justify-content-center">
+            
+            <div class="col-sm-6 navbar">
                 Filter by Party:
                 <!-- Default inline 1-->
                 <div id="Republican" class="custom-control custom-checkbox custom-control-inline ">
@@ -117,14 +135,14 @@
                 </div>
             </div>
 
-            <div class="col-sm-2 navbar justify-content-end">
+            <div class="col-sm-3 navbar justify-content-end">
                 Seniority Year:
                 <select name="seniority filter" id="seniorityFilter">
                     <option value="all">All</option>
                 </select>
             </div>
 
-            <div class=" dropdown col-sm-2  navbar justify-content-end">
+            <div class=" dropdown col-sm-3  navbar justify-content-end">
                 Filter by State:
                 <select name="stateFilter" id="stateFilter">
                     <option value="all">All</option>

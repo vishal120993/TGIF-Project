@@ -5,7 +5,7 @@ const democratParty = document.getElementById("defaultInline2");
 const independentParty = document.getElementById("defaultInline3");
 const membersState = document.getElementById("stateFilter");
 const membersSeniority = document.getElementById("seniorityFilter");
-//let membersNames = document.getElementById("searchBar").value.toUpperCase();
+
 
 
 // Functions
@@ -130,28 +130,19 @@ membersSeniority.addEventListener("change", function () {
     createTable(filterMembers(members), "table-data");
 });
 
+
+
+
+//--------------------------------------------------------------------------------------------------------///
+//let membersNames = document.getElementById("searchBar").value.toUpperCase();
+
 /*
 membersNames.addEventListener("onkeyup", function () {
     createTable(searchNames(members), "table-data");
 })
 */
-
-
-
-// function for search bar
 /*
-function searchNames(members) {
-    let arrayOfNames = [];
-
-    for (let i = 0; i < members.length; i++) {
-        if (membersNames.value == members[i].full_name ) {
-            arrayOfNames.push(members[i]);
-        }
-    }
-    return arrayOfNames;
-}
-
-
+////----------------------------------------------------///
 // array.filter()
   let arrayOfCheckedBoxFilters = [];
 
@@ -162,7 +153,7 @@ arrayOfCheckedBoxFilters = arrayOfCheckedBoxFilters.filter(filterMembers);
 console.log(arrayOfCheckedBoxFilters);
 */
 
-
+///---------------------------------------------------////
 
 // function to create senority level filter
 /*function filterSeniorityMembers(members) {
@@ -200,7 +191,7 @@ function showSeniority(members) {
 
 showSeniority(members); */
 
-
+//------------------------------------------------------------------------------//
 
 /*
 function show(){
@@ -211,3 +202,5 @@ let btn = document.getElementById("Republican");
 btn.addEventListener("click", show);
 
 */
+
+//-----------------------------------------------------------------------------///

@@ -1,27 +1,35 @@
 // remember to look in to how to access a JSON object, if you are having trouble redefining values
+const members = data.results[0].members;
 let statistics = {
     "numberOfDemocrats": 0,
     "numberOfRepublicans": 0,
     "numberOfIndependents": 0,
- }
-// Main function for creating table dynamically
+}
 
-function getTable() {
-    let housestatistics = " ";
-    let votesWithDemocratsParty = 0;
-    let votesWithRepublicansParty = 0;
-    let votesWithIndependentsParty = 0;
 
-    //for loop that create the sum of percentage votes for each party
-    for (let i = 0; i < data.results[0].members.length; i++) {
-        if (data.results[0].members[i].party === "D") {
-            votesWithDemocratsParty += data.results[0].members[i].votes_with_party_pct;
-        } else if (data.results[0].members[i].party === "R") {
-            votesWithRepublicansParty += data.results[0].members[i].votes_with_party_pct;
-        } else if (data.results[0].members[i].party === "I") {
-            votesWithIndependentsParty += data.results[0].members[i].votes_with_party_pct;
+let votesWithDemocratsParty = 0;
+let votesWithRepublicansParty = 0;
+let votesWithIndependentsParty = 0;
+
+//---------------------functions for glance table------------------------------------------------------//
+//for loop that create the sum of percentage votes for each party
+function sumOfPercentageVotes(members) {
+
+    for (let i = 0; i < members.length; i++) {
+        if (members[i].party === "D") {
+            votesWithDemocratsParty += members[i].votes_with_party_pct;
+        } else if (members[i].party === "R") {
+            votesWithRepublicansParty += members[i].votes_with_party_pct;
+        } else if (members[i].party === "I") {
+            votesWithIndependentsParty += members[i].votes_with_party_pct;
         }
     }
+    return members;
+}
+
+// Main function for creating table dynamically
+function getTable(members, tableId) {
+    let housestatistics = " ";
 
     // starting of senate glance table
     housestatistics = "<table>";
@@ -32,21 +40,16 @@ function getTable() {
     housestatistics += "<th class ='header'>" + "No. of Reps" + "</th>";
     housestatistics += "<th class ='header'>" + "Percentage Of Votes With Party" + "</th>";
     housestatistics += "</tr>";
-    
+
     // for loop that finds the number of members in each party
-    for (let i = 0; i < data.results[0].members.length; i++) {
+    for (let i = 0; i < members.length; i++) {
 
-        if (data.results[0].members[i].party === "D") {
+        if (members[i].party === "D") {
             statistics.numberOfDemocrats = statistics.numberOfDemocrats + 1;
-
-
-        } else if (data.results[0].members[i].party === "R") {
+        } else if (members[i].party === "R") {
             statistics.numberOfRepublicans = statistics.numberOfRepublicans + 1;
-
-
-        } else if (data.results[0].members[i].party === "I") {
+        } else if (members[i].party === "I") {
             statistics.numberOfIndependents = statistics.numberOfIndependents + 1;
-
         }
     }
 
@@ -59,14 +62,14 @@ function getTable() {
 
     // Total number of members in all party (450)
     let total = statistics.numberOfDemocrats + statistics.numberOfRepublicans + statistics.numberOfIndependents;
-    
+
     // Total number of members voted out of 450 (412.389 members)
-    let totalMembersVoted = averagePercentageOfDemocrats.toFixed(2)/100 * statistics.numberOfDemocrats + averagePercentageOfRepublicans.toFixed(2)/100 * statistics.numberOfRepublicans 
-                            //+averagePercentageOfIndependents.toFixed(2)/100 * statistics.numberOfIndependents ;
-   
+    let totalMembersVoted = averagePercentageOfDemocrats.toFixed(2) / 100 * statistics.numberOfDemocrats + averagePercentageOfRepublicans.toFixed(2) / 100 * statistics.numberOfRepublicans
+    //+averagePercentageOfIndependents.toFixed(2)/100 * statistics.numberOfIndependents ;
+
     // Average percentageof members voted (412.389/450 *100 == 91.64%)
     let averagePercentageOfMembersVoted = totalMembersVoted / total * 100;
-   
+
     housestatistics += "<tr>";
     housestatistics += "<td class = 'party'>" + "Democrats" + "</td>";
     housestatistics += "<td>" + statistics.numberOfDemocrats + "</td>";
@@ -81,7 +84,7 @@ function getTable() {
 
     housestatistics += "<tr>";
     housestatistics += "<td class = 'party'>" + "Independents" + "</td>";
-    housestatistics += "<td>" + statistics.numberOfIndependents+ "</td>";
+    housestatistics += "<td>" + statistics.numberOfIndependents + "</td>";
     housestatistics += "<td>" + /*averagePercentageOfIndependents.toFixed(2)*/ 0 + " %" + "</td>";
     housestatistics += "</tr>";
 
@@ -91,15 +94,18 @@ function getTable() {
     housestatistics += "<td>" + averagePercentageOfMembersVoted.toFixed(2) + " %" + "</td>";
     housestatistics += "</tr>";
     housestatistics += "</table>";
-    document.getElementById("table-data").innerHTML = housestatistics;
+    document.getElementById(tableId).innerHTML = housestatistics;
 }
 
-getTable();
+getTable(sumOfPercentageVotes(members), "table-data");
+
+
+//---------------------functions for calculating 10 percent table-------------------------------------//
 
 // function to calculate the table data like Names, missed votes, and %missed votes
 function calculateEngaged(members) {
-    let tenPercentOfTheLength = members.length * 0.1;  // creating 10% of members length
-    let tenPercentArray = [];          // Creating an empty array 
+    let tenPercentOfTheLength = members.length * 0.1; // creating 10% of members length
+    let tenPercentArray = []; // Creating an empty array 
     // For loop for getting through all the table data 
     for (i = 0; i < members.length; i++) {
         if (i < tenPercentOfTheLength) {
@@ -130,7 +136,7 @@ function createTenPercentTable(members, tableId) {
         if (members[i].middle_name === null) {
             members[i].full_name = members[i].first_name + " " + members[i].last_name
         } else {
-            members[i].full_name = members[i].first_name + " " + members[i].middle_name + " " + data.results[0].members[i].last_name
+            members[i].full_name = members[i].first_name + " " + members[i].middle_name + " " + members[i].last_name
         }
 
         senateEngagedStatistics += "<tr>";
@@ -144,12 +150,10 @@ function createTenPercentTable(members, tableId) {
 }
 
 //Create ascending and descending order of missed  votes
-const sortedLeastEngaged = [...data.results[0].members.sort((a, b) => Number(b.missed_votes) - Number(a.missed_votes))];
-const sortedMostEngaged = [...data.results[0].members.sort((a, b) => Number(a.missed_votes) - Number(b.missed_votes))];
+const sortedLeastEngaged = [...members.sort((a, b) => Number(b.missed_votes) - Number(a.missed_votes))];
+const sortedMostEngaged = [...members.sort((a, b) => Number(a.missed_votes) - Number(b.missed_votes))];
 
 // Call both the functions
 
 createTenPercentTable(calculateEngaged(sortedLeastEngaged), "table-least-engaged");
 createTenPercentTable(calculateEngaged(sortedMostEngaged), "table-most-engaged");
-
-

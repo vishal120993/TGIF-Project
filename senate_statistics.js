@@ -1,28 +1,34 @@
 // remember to look in to how to access a JSON object, if you are having trouble redefining values
+const members = data.results[0].members;
 let statistics = {
     "numberOfDemocrats": 0,
     "numberOfRepublicans": 0,
     "numberOfIndependents": 0,
 }
 
-// Main function for creating table dynamically
+let votesWithDemocratsParty = 0;
+let votesWithRepublicansParty = 0;
+let votesWithIndependentsParty = 0;
 
-function getTable() {
-    let senatestatistics = " ";
-    let votesWithDemocratsParty = 0;
-    let votesWithRepublicansParty = 0;
-    let votesWithIndependentsParty = 0;
+//---------------------functions for glance table------------------------------------------------------//
+//for loop that create the sum of percentage votes for each party
+function sumOfPercentageVotes(members) {
 
-    //for loop that create the sum of percentage votes for each party
-    for (let i = 0; i < data.results[0].members.length; i++) {
-        if (data.results[0].members[i].party === "D") {
-            votesWithDemocratsParty += data.results[0].members[i].votes_with_party_pct;
-        } else if (data.results[0].members[i].party === "R") {
-            votesWithRepublicansParty += data.results[0].members[i].votes_with_party_pct;
-        } else if (data.results[0].members[i].party === "I") {
-            votesWithIndependentsParty += data.results[0].members[i].votes_with_party_pct;
+    for (let i = 0; i < members.length; i++) {
+        if (members[i].party === "D") {
+            votesWithDemocratsParty += members[i].votes_with_party_pct;
+        } else if (members[i].party === "R") {
+            votesWithRepublicansParty += members[i].votes_with_party_pct;
+        } else if (members[i].party === "I") {
+            votesWithIndependentsParty += members[i].votes_with_party_pct;
         }
     }
+    return members;
+}
+// Main function for creating table dynamically
+
+function getTable(members, tableId) {
+    let senatestatistics = " ";
 
     // starting of senate glance table
     senatestatistics = "<table>";
@@ -35,19 +41,14 @@ function getTable() {
     senatestatistics += "</tr>";
 
     // for loop that finds the number of members in each party
-    for (let i = 0; i < data.results[0].members.length; i++) {
+    for (let i = 0; i < members.length; i++) {
 
-        if (data.results[0].members[i].party === "D") {
+        if (members[i].party === "D") {
             statistics.numberOfDemocrats = statistics.numberOfDemocrats + 1;
-
-
-        } else if (data.results[0].members[i].party === "R") {
+        } else if (members[i].party === "R") {
             statistics.numberOfRepublicans = statistics.numberOfRepublicans + 1;
-
-
-        } else if (data.results[0].members[i].party === "I") {
+        } else if (members[i].party === "I") {
             statistics.numberOfIndependents = statistics.numberOfIndependents + 1;
-
         }
     }
 
@@ -93,15 +94,15 @@ function getTable() {
     senatestatistics += "</tr>";
 
     senatestatistics += "</table>";
-    document.getElementById("table-d").innerHTML = senatestatistics;
+    document.getElementById(tableId).innerHTML = senatestatistics;
 }
+getTable(sumOfPercentageVotes(members), "table-data");
 
-getTable();
-
+//---------------------functions for calculating 10 percent table-------------------------------------//
 // function to calculate the table data like Names, missed votes, and %missed votes
 function calculateEngaged(members) {
-    let tenPercentOfTheLength = members.length * 0.1;  // creating 10% of members length
-    let tenPercentArray = [];          // Creating an empty array 
+    let tenPercentOfTheLength = members.length * 0.1; // creating 10% of members length
+    let tenPercentArray = []; // Creating an empty array 
     // For loop for getting through all the table data 
     for (i = 0; i < members.length; i++) {
         if (i < tenPercentOfTheLength) {
@@ -146,8 +147,8 @@ function createTenPercentTable(members, tableId) {
 }
 
 //Create ascending and descending order of missed  votes
-const sortedLeastEngaged = [...data.results[0].members.sort((a, b) => Number(b.missed_votes) - Number(a.missed_votes))];
-const sortedMostEngaged = [...data.results[0].members.sort((a, b) => Number(a.missed_votes) - Number(b.missed_votes))];
+const sortedLeastEngaged = [...members.sort((a, b) => Number(b.missed_votes) - Number(a.missed_votes))];
+const sortedMostEngaged = [...members.sort((a, b) => Number(a.missed_votes) - Number(b.missed_votes))];
 
 // Call both the functions
 

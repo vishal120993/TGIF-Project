@@ -2,6 +2,7 @@
 <html lang="en">
 
 <!---------------------------------Linked CSS and Scripts--------------------------------------------------->
+
 <head>
     <title></title>
     <meta charset="utf-8">
@@ -33,19 +34,24 @@
             <div class="col-sm-8 navbar justify-content-end">
                 <img src="mail.jpg" class="rounded-circle img-fluid col-sm-2 " alt="mail">
                 <a href="mailto:info@tgif.net">
-                    <h2  class="text-info">info@tgif.net</h2>
+                    <h2 class="text-info">info@tgif.net</h2>
                 </a>
             </div>
         </div>
-        
+
         <!----------------------------Navigation Bar text and styling---------------------------------------->
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link text-light bg-dark dropdown-item active" href="#">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="senate_data.html">Congress 113</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link nav-link dropdown-toggle text-light" id="navbardrop" data-toggle="dropdown"
+                        href="senate_data.html">Congress 113</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="house_data.html">House</a>
+                        <a class="dropdown-item" href="senate_data.html">Senate</a>
+                    </div>
                 </li>
                 <!--  <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="">
@@ -56,9 +62,29 @@
                         <a class="dropdown-item" href="#"></a>
                     </div>-->
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle bg-dark text-light" href="#" id="navbardrop"
+                        data-toggle="dropdown">
+                        Attendance
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="house_attendance_statistics_page.html">House</a>
+                        <a class="dropdown-item" href="senate_attendance_statistics_page.html">Senate</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle bg-dark text-light" href="#" id="navbardrop"
+                        data-toggle="dropdown">
+                        Party Loyalty
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="house_party_loyalty_statistics_page.html">House</a>
+                        <a class="dropdown-item" href="senate_party_loyalty_statistics_page.html">Senate</a>
+                    </div>
+                </li>
             </ul>
         </nav> <br><br>
-        
+
         <!-----------------------Sub heading and paragraph text and logo styling---------------------------->
         <h1>About Us</h1>
         <div class="row">
@@ -74,21 +100,12 @@
                         <div class="card-body">
                             <p> Openness, accountability, and honesty define government transparency. In a free society,
                                 transparency is government’s obligation to share information with citizens. It is at the
-                                heart of
-                                how
-                                citizens hold their public officials accountable. Here at TGIF we believe that
-                                government should be
-                                transparent.</p>
+                                heart of how citizens hold their public officials accountable. Here at TGIF we believe
+                                that government should be transparent.</p>
                             <p> Governments exist to serve the people. Information on how officials conduct the public
-                                business and
-                                spend
-                                taxpayer money must be readily available and easily understood. This transparency allows
-                                good and
-                                just
-                                governance. Transparency promotes accountability and provides information for citizens
-                                about what
-                                their
-                                Government is doing.</p>
+                                business and spend taxpayer money must be readily available and easily understood. This transparency allows
+                                good and just governance. Transparency promotes accountability and provides information for citizens
+                                about what their Government is doing.</p>
                         </div>
                     </div>
                 </div>
@@ -102,25 +119,18 @@
                     <div id="collapseTwo" class="collapse" data-parent="#accordion">
                         <div class="card-body">
                             <p> We also believe that government should be participatory. Public engagement enhances the
-                                Government’s
-                                effectiveness and improves the quality of its decisions. Knowledge is widely dispersed
-                                in society,
-                                and
-                                public officials benefit from having access to that dispersed knowledge. We invite you
-                                to use our
-                                site
-                                to
-                                become actively engaged in American government.</p>
+                                Government’s effectiveness and improves the quality of its decisions. Knowledge is widely dispersed
+                                in society, and public officials benefit from having access to that dispersed knowledge. We invite you
+                                to use our site to become actively engaged in American government.</p>
                             <p>TGIF works to disclose information in forms that the public can readily find and use. We
-                                solicit
-                                public
-                                feedback to identify information of greatest use to the public.</p>
+                                solicit public feedback to identify information of greatest use to the public.</p>
                         </div>
                     </div>
                 </div>
 
 
             </div>
+
             <!--Just More info text styling-->
             <!--   <div class="col-sm-8">
                <p> Openness, accountability, and honesty define government transparency. In a free society,
@@ -155,7 +165,7 @@
             <div class="col-sm-4 navbar justify-content-center"> <img src="both.jpg" class="rounded-circle img-fluid "
                     alt="TGIF"></div>
         </div> <br>
-        
+
         <!----------------------------------Footer text and styling------------------------------------------>
         <div class="footer bottom navbar navbar-expand-md bg-dark text-light justify-content-center">&copy; 2016
             TGIF | All Rights Reserved</div>
