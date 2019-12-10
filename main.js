@@ -1,12 +1,60 @@
 // Declaration of variables
-const members = data.results[0].members;
+//const members = data.results[0].members;
+let members = [];
 const republicanParty = document.getElementById("defaultInline1");
 const democratParty = document.getElementById("defaultInline2");
 const independentParty = document.getElementById("defaultInline3");
 const membersState = document.getElementById("stateFilter");
 const membersSeniority = document.getElementById("seniorityFilter");
+let senate_url = "https://api.propublica.org/congress/v1/113/senate/members.json";
+let house_url = "https://api.propublica.org/congress/v1/113/house/members.json";
 
+console.log(members)
 
+if (window.location.href.includes("senate")) {
+    fetchData(senate_url)
+} else if (window.location.href.includes("house")) {
+    fetchData(house_url)
+}
+async function fetchData(url) { // asynchronous function can keep other function when this function executes
+    members = await fetch(url, {
+            method: "get",
+            headers: {
+                "X-API-Key": "jyvzI6PZtumsAVGQwshG51wMzjc141KwouTgu48b"
+            }
+        })
+        .then(response => response.json())
+        .then(data => data.results[0].members)
+        .catch(error => console.error(error));
+
+    console.log(members)
+
+    //call the functions inside async function
+
+    showState(members);
+
+    createTable(members, "table-data");
+
+    democratParty.addEventListener("click", function () {
+        createTable(filterMembers(members), "table-data");
+    });
+
+    republicanParty.addEventListener("click", function () {
+        createTable(filterMembers(members), "table-data");
+    });
+    
+    independentParty.addEventListener("click", function () {
+        createTable(filterMembers(members), "table-data");
+    });
+
+    membersState.addEventListener("change", function () {
+        createTable(filterMembers(members), "table-data");
+    });
+
+    membersSeniority.addEventListener("change", function () {
+        createTable(filterMembers(members), "table-data");
+    });
+}
 
 // Functions
 
@@ -50,6 +98,8 @@ function createTable(members, tableId) {
 
 // function to filter out members on the basis of party and state
 function filterMembers(members) {
+    console.log("filterMembers")
+
     let array = [];
     //console.log(democratParty);
     for (let i = 0; i < members.length; i++) {
@@ -61,10 +111,16 @@ function filterMembers(members) {
                     array.push(members[i]);
                 } else if (members[i].party === "I" && independentParty.checked) {
                     array.push(members[i]);
+                } else if (democratParty.checked === false && republicanParty.checked === false && independentParty.checked === false) {
+                    document.getElementById("filterOut").style.display = "block";
+                    document.getElementById("filterOut").style.color = "green";
+                    document.getElementById("filterOut").style.textAlign = "center";
+                    document.getElementById("filterOut").style.fontSize = "20px";
                 }
             }
         }
     }
+
     //console.log(array);
     return array;
 }
@@ -105,93 +161,16 @@ function showState(members) {
     }
 }
 
-showState(members);
 
 
-// Calling the table
-createTable(members, "table-data");
 
-//Addeventlisteners for interactive checkbox and dropdown options
-democratParty.addEventListener("click", function () {
-    createTable(filterMembers(members), "table-data");
-});
-republicanParty.addEventListener("click", function () {
-    createTable(filterMembers(members), "table-data");
-});
-independentParty.addEventListener("click", function () {
-    createTable(filterMembers(members), "table-data");
-});
-
-membersState.addEventListener("change", function () {
-    createTable(filterMembers(members), "table-data");
-});
-
-membersSeniority.addEventListener("change", function () {
-    createTable(filterMembers(members), "table-data");
-});
 
 
 
 
 //--------------------------------------------------------------------------------------------------------///
-//let membersNames = document.getElementById("searchBar").value.toUpperCase();
 
-/*
-membersNames.addEventListener("onkeyup", function () {
-    createTable(searchNames(members), "table-data");
-})
-*/
-/*
-////----------------------------------------------------///
-// array.filter()
-  let arrayOfCheckedBoxFilters = [];
 
-  function filterMembers (members) {
-      arrayOfCheckedBoxFilters.push(members[i].party === "D");
-  }
-arrayOfCheckedBoxFilters = arrayOfCheckedBoxFilters.filter(filterMembers);
-console.log(arrayOfCheckedBoxFilters);
-*/
-
-///---------------------------------------------------////
-
-// function to create senority level filter
-/*function filterSeniorityMembers(members) {
-    let arrayOfSeniority = [];
-    //console.log(democratParty);
-    for (let i = 0; i < members.length; i++) {
-        if (membersSeniority.value == members[i].seniority || membersSeniority.value == 'all') {
-            arrayOfSeniority.push(members[i]);
-        }
-    }
-    //console.log(array);
-    return arrayOfSeniority;
-}
-
-// function to create the seniority options and sorting in ascending order
-function showSeniority(members) {
-    let arrayOfSeniorityYear = [];
-
-    for (let i = 0; i < members.length; i++) {
-        if (!arrayOfSeniorityYear.includes(members[i].seniority)) { // seniority years are only pushed once
-            arrayOfSeniorityYear.push(members[i].seniority);
-        }
-    }
-
-    //Create ascending order of seniority year
-    arrayOfSeniorityYear.sort((a, b) => Number(b.seniority) - Number(a.seniority));
-
-    for (let i = 0; i < arrayOfSeniorityYear.length; i++) {
-        let option = document.createElement('option') // create options for seniority years
-        option.setAttribute('value', arrayOfSeniorityYear[i]);
-        option.innerHTML = arrayOfSeniorityYear[i]; // option are accessed as seniority from 
-        membersSeniority.appendChild(option) // select is main, option is append child
-    }
-}
-
-showSeniority(members); */
-
-//------------------------------------------------------------------------------//
 
 /*
 function show(){
@@ -203,4 +182,4 @@ btn.addEventListener("click", show);
 
 */
 
-//-----------------------------------------------------------------------------///
+//--------------------------------------------------------------------------------------------------------///

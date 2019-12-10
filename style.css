@@ -17,3 +17,7 @@ th.header {
 td.party {
     text-align: left;
 }
+
+div.filter {
+    display: none;
+}

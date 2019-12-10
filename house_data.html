@@ -112,7 +112,7 @@
 
         <!---------------------------------Check box and drop down filters---------------------------------->
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 navbar">
                 Filter by Party:
                 <!-- Default inline 1-->
                 <div class="custom-control custom-checkbox custom-control-inline">
@@ -133,14 +133,14 @@
                 </div>
             </div>
 
-            <div class="col-sm-2">
+            <div class="col-sm-3 navbar justify-content-end">
                 Seniority Year:
                 <select name="seniority filter" id="seniorityFilter">
                     <option value="all">All</option>
                 </select>
             </div>
 
-            <div class=" dropdown col-sm-4 navbar justify-content-end">
+            <div class=" dropdown col-sm-3 navbar justify-content-end">
                 Filter by State:
                 <select name="stateFilter" id="stateFilter">
                     <option value="all">All</option>
@@ -154,7 +154,7 @@
         <table id="table-data"
             class="table-sm table-borderless table-hover table-light table-striped col-sm-12 text-xs-center"></table>
         <br>
-
+        <div id="filterOut" class="filter"> Please click on the desired checkboxes to filter</div>
         <!----------------------------------Footer text and styling------------------------------------------>
         <div class="footer bottom navbar navbar-expand-md bg-dark text-light justify-content-center">&copy; 2016
             TGIF
@@ -162,7 +162,7 @@
     </div>
 
     <!---------------------------Javascript and getting table values from JSON and JS----------------------->
-    <script src="pro_congress_113_house.js"></script>
+    <!--<script src="pro_congress_113_house.js"></script>-->
     <script src="main.js"></script>
 
 

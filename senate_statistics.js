@@ -1,5 +1,7 @@
 // remember to look in to how to access a JSON object, if you are having trouble redefining values
-const members = data.results[0].members;
+//const members = data.results[0].members;
+let members = [];
+
 let statistics = {
     "numberOfDemocrats": 0,
     "numberOfRepublicans": 0,
@@ -9,6 +11,31 @@ let statistics = {
 let votesWithDemocratsParty = 0;
 let votesWithRepublicansParty = 0;
 let votesWithIndependentsParty = 0;
+
+let senate_url = "https://api.propublica.org/congress/v1/113/senate/members.json";
+
+console.log(members)
+fetchSenateData()
+async function fetchSenateData() {  // asynchronous function can keep other function when this function executes
+    members = await fetch(senate_url, {
+        method: "get",
+        headers: {
+            "X-API-Key" : "jyvzI6PZtumsAVGQwshG51wMzjc141KwouTgu48b"
+        }
+    })
+  .then(response => response.json())
+  .then(data => data.results[0].members)
+  .catch(error => console.error(error));
+  
+  console.log(members)
+  // just call the functions here
+  getTable(sumOfPercentageVotes(members), "table-data");
+
+  createTenPercentTable(calculateEngaged(sortedLeastEngaged), "table-least-engaged");
+  
+  createTenPercentTable(calculateEngaged(sortedMostEngaged), "table-most-engaged");
+}
+
 
 //---------------------functions for glance table------------------------------------------------------//
 //for loop that create the sum of percentage votes for each party
@@ -96,7 +123,7 @@ function getTable(members, tableId) {
     senatestatistics += "</table>";
     document.getElementById(tableId).innerHTML = senatestatistics;
 }
-getTable(sumOfPercentageVotes(members), "table-data");
+//getTable(sumOfPercentageVotes(members), "table-data");
 
 //---------------------functions for calculating 10 percent table-------------------------------------//
 // function to calculate the table data like Names, missed votes, and %missed votes
@@ -152,10 +179,8 @@ const sortedMostEngaged = [...members.sort((a, b) => Number(a.missed_votes) - Nu
 
 // Call both the functions
 
-createTenPercentTable(calculateEngaged(sortedLeastEngaged), "table-least-engaged");
-createTenPercentTable(calculateEngaged(sortedMostEngaged), "table-most-engaged");
-
-
+//createTenPercentTable(calculateEngaged(sortedLeastEngaged), "table-least-engaged");
+//createTenPercentTable(calculateEngaged(sortedMostEngaged), "table-most-engaged");
 
 
 
