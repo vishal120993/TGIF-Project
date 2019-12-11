@@ -21,6 +21,7 @@
 </head>
 
 <body>
+
     <div class="container">
 
         <!---------------------------------Header text and styling------------------------------------------>
@@ -56,25 +57,25 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle bg-dark text-light" href="#" id="navbardrop"
-                            data-toggle="dropdown">
-                            Attendance
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="house_attendance_statistics_page.html">House</a>
-                            <a class="dropdown-item" href="senate_attendance_statistics_page.html">Senate</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle bg-dark text-light" href="#" id="navbardrop"
-                            data-toggle="dropdown">
-                            Party Loyalty
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="house_party_loyalty_statistics_page.html">House</a>
-                            <a class="dropdown-item" href="senate_party_loyalty_statistics_page.html">Senate</a>
-                        </div>
-                    </li>
+                    <a class="nav-link dropdown-toggle bg-dark text-light" href="#" id="navbardrop"
+                        data-toggle="dropdown">
+                        Attendance
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="house_attendance_statistics_page.html">House</a>
+                        <a class="dropdown-item" href="senate_attendance_statistics_page.html">Senate</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle bg-dark text-light" href="#" id="navbardrop"
+                        data-toggle="dropdown">
+                        Party Loyalty
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="house_party_loyalty_statistics_page.html">House</a>
+                        <a class="dropdown-item" href="senate_party_loyalty_statistics_page.html">Senate</a>
+                    </div>
+                </li>
             </ul>
         </nav> <br><br>
 
@@ -113,7 +114,7 @@
 
         <div class="row">
 
-            
+
             <div class="col-sm-6 navbar">
                 Filter by Party:
                 <!-- Default inline 1-->
@@ -150,13 +151,17 @@
 
             </div>
 
-           
+
 
         </div>
-        
+
         <!-----------------------------------Table text and styling------------------------------------------>
+
         <table id="table-data" class="table-sm table-borderless table-hover table-light table-striped col-sm-12 ">
         </table> <br>
+        <div class="loader">
+            <img src="giphy.gif" alt="Loading...">
+        </div>
 
         <div id="filterOut" class="filter"> Please click on the desired checkboxes to filter</div>
         <!----------------------------------Footer text and styling------------------------------------------>
