@@ -28,11 +28,17 @@ async function fetchData(url) { // asynchronous function can keep other function
         .then(response => response.json())
         .then(data => data.results[0].members)
         .catch(error => console.error(error));
-
+     
+        const loader = document.querySelector(".loader");
+        loader.className += " hidden";
     console.log(members)
 
      //call the functions inside async function
     getTable(sumOfPercentageVotes(members), "table-data");
+     
+    //Create ascending and descending order of percentage of votes party
+const sortedLeastLoyal = [...members.sort((a, b) => Number(a.votes_with_party_pct) - Number(b.votes_with_party_pct))]; //ascending 
+const sortedMostLoyal = [...members.sort((a, b) => Number(b.votes_with_party_pct) - Number(a.votes_with_party_pct))]; //descending
 
     createTenPercentTable(calculateLoyal(sortedLeastLoyal), "table-least-loyal");
    
@@ -135,7 +141,6 @@ function getTable(members, tableId) {
     document.getElementById(tableId).innerHTML = membersStatistics;
 }
 
-//getTable(sumOfPercentageVotes(members), "table-data");
 
 //---------------------functions for 10 percent loyalty table------------------------------------------//
 // function to calculate the table data like Names, missed votes, and %missed votes
@@ -185,11 +190,4 @@ function createTenPercentTable(members, tableId) {
     document.getElementById(tableId).innerHTML = membersLoyaltystatistics;
 }
 
-//Create ascending and descending order of percentage of votes party
-const sortedLeastLoyal = [...members.sort((a, b) => Number(a.votes_with_party_pct) - Number(b.votes_with_party_pct))]; //ascending 
-const sortedMostLoyal = [...members.sort((a, b) => Number(b.votes_with_party_pct) - Number(a.votes_with_party_pct))]; //descending
 
-// Call both the functions
-
-//createTenPercentTable(calculateLoyal(sortedLeastLoyal), "table-least-loyal");
-//createTenPercentTable(calculateLoyal(sortedMostLoyal), "table-most-loyal");

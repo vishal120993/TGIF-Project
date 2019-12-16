@@ -1,5 +1,4 @@
 // Declaration of variables
-//const members = data.results[0].members;
 let members = [];
 const republicanParty = document.getElementById("defaultInline1");
 const democratParty = document.getElementById("defaultInline2");
@@ -27,9 +26,12 @@ async function fetchData(url) { // asynchronous function can keep other function
         .then(data => data.results[0].members)
         .catch(error => console.error(error));
 
+    const loader = document.querySelector(".loader");
+    loader.className += " hidden";
+
     console.log(members)
 
-    //call the functions inside async function
+    //call the functions and add  event listeners inside async function
 
     showState(members);
 
@@ -42,7 +44,7 @@ async function fetchData(url) { // asynchronous function can keep other function
     republicanParty.addEventListener("click", function () {
         createTable(filterMembers(members), "table-data");
     });
-    
+
     independentParty.addEventListener("click", function () {
         createTable(filterMembers(members), "table-data");
     });
@@ -160,13 +162,6 @@ function showState(members) {
         membersSeniority.appendChild(option) // select is main, option is append child
     }
 }
-
-window.addEventListener("load", function() {
-    const loader = document.querySelector(".loader");
-    loader.className += " hidden";
-})
-
-
 
 //--------------------------------------------------------------------------------------------------------///
 
